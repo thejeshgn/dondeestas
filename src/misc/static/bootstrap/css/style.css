@@ -11,10 +11,24 @@ html, body
 	height:99%;
 }
 
+#family form , #migrant form{
+	background: #231F20;
+	margin-top: 20%;
+	padding:10%;
+	border: solid #C0B301 2px;
+	border-radius:15px;
+    	height:350px;
+}
+
+form input{
+	border-radius:5px;
+}
+
 #family{
 	background: no-repeat url("../img/FamilyPics.jpg");
 	height:99%;
 }
+
 
 #main_frame{
     height:99%;
@@ -29,4 +43,11 @@ html, body
     height:600px;
     min-height:100%;
     width:100%;
+}
+
+form legend{
+	color:#fff;
+}
+p.help-block{
+	font-size:1.3em;
 }

@@ -36,9 +36,63 @@
 <body>
 <div class="container" id="container">
 	<div class="row clearfix" id="main_frame">
-		<div id="migrant" class="col-md-6 column">
+	<div id="migrant" class="col-md-6 column">
+
+		<form class="form-horizontal">
+		<fieldset>
+
+		<!-- Form Name -->
+		<legend>REGISTRO DE MIGRANTES</legend>
+
+		<!-- Text input-->
+		<div class="control-group">
+		  <label class="control-label" for="pseudónimo"></label>
+		  <div class="controls">
+		    <p class="help-block">Escribe tu nombre falso (pseudónimo)</p>
+		    <input id="nickname" name="nickname" type="text" placeholder="ex. bob123" class="input-xlarge" required="">
+		  </div>
 		</div>
-		<div id="family" class="col-md-6 column">
+
+		<!-- Button -->
+		<div class="control-group">
+		  <label class="control-label" for="Enter"></label>
+		  <div class="controls">
+		    <button id="Enter" name="Enter" class="btn btn-default">Entrar</button>
+		  </div>
+		</div>
+
+		</fieldset>
+		</form>
+
+		</div>
+	<div id="family" class="col-md-6 column">
+
+		<form class="form-horizontal">
+		<fieldset>
+
+		<!-- Form Name -->
+		<legend>BÚSQUEDA DE MIGRANTES</legend>
+
+		<!-- Text input-->
+		<div class="control-group">
+		  <label class="control-label" for="searchname"></label>
+		  <div class="controls">
+		    <p class="help-block">Escribe el nombre falso (pseudónimo) de la persona migrante que quieres buscar</p>
+		    <input id="searchname" name="searchname" type="text" placeholder="ex. bob123" class="input-xlarge" required="">
+		  </div>
+		</div>
+
+		<!-- Button -->
+		<div class="control-group">
+		  <label class="control-label" for="Search"></label>
+		  <div class="controls">
+		    <button id="Search" name="Search" class="btn btn-default">BUSCAR</button>
+		  </div>
+		</div>
+
+		</fieldset>
+		</form>
+
 		</div>
 	</div>
 </div>
