@@ -1,19 +1,32 @@
+html, body
+{
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 #migrant{
 	background: no-repeat url("../img/TrainTrack.JPG");
-	height:1000px;
-    min-height:100%;
+	height:99%;
 }
 
 #family{
 	background: no-repeat url("../img/FamilyPics.jpg");
-	height:1000px;
-    min-height:100%;
+	height:99%;
 }
 
+#main_frame{
+    height:99%;
+}
+
+#container{
+    height:99%;
+}
 
 #display_info{
     background: no-repeat url("../img/TrainTrack.JPG");
-    height:1000px;
+    height:600px;
     min-height:100%;
     width:100%;
 }
