@@ -14,8 +14,7 @@ urlpatterns = patterns('',
     #admin related urls
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin_tools/', include('admin_tools.urls')),
-    url(r'^$', misc.views.Home.as_view(),
-        name='home',),
+    url(r'^path/', misc.views.DisplayPath.as_view(),name='path',),
 
 )
 

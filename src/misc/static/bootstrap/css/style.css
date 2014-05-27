@@ -24,9 +24,32 @@ html, body
     height:99%;
 }
 
-#display_info{
-    background: no-repeat url("../img/TrainTrack.JPG");
-    height:600px;
-    min-height:100%;
+#display_map_info{
+    background: no-repeat url("../img/trackfull.jpg");
+    height:99%;
     width:100%;
+}
+
+#maps {
+border-radius: 10px; 
+height: 80%;
+width: 80%;
+margin: 5%;
+opacity:1;
+}
+
+#info {
+    position: absolute;
+    border-radius: 10px;
+    background-color: white; 
+    z-index: 1;
+    top:50%;
+    left:10%;
+    width: 250px;
+    height: 140px;    
+    border: 1px solid yellow;
+    margin: 50px auto 0;
+    padding: 10px;
+    opacity:0.6;
+
 }

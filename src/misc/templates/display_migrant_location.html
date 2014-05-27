@@ -8,13 +8,13 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-    <!--link rel="stylesheet/less" href="{% static 'bootstrap/less/bootstrap.less' %}" type="text/css" /-->
-    <!--link rel="stylesheet/less" href="{% static 'bootstrap/less/responsive.less" type="text/css' %}" /-->
-    <!--script src="{% static 'bootstrap/js/less-1.3.3.min.js' %} "></script-->
-    <!--append ‘#!watch’ to the browser URL, then refresh the page. -->
-    
-    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'bootstrap/css/style.css' %}" rel="stylesheet">
+  <!--link rel="stylesheet/less" href="{% static 'bootstrap/less/bootstrap.less' %}" type="text/css" /-->
+  <!--link rel="stylesheet/less" href="{% static 'bootstrap/less/responsive.less" type="text/css' %}" /-->
+  <!--script src="{% static 'bootstrap/js/less-1.3.3.min.js' %} "></script-->
+  <!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+  
+  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'bootstrap/css/style.css' %}" rel="stylesheet">
 
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
@@ -28,17 +28,53 @@
   <link rel="apple-touch-icon-precomposed" href="{% static 'bootstrap/img/apple-touch-icon-57-precomposed.png' %}">
   <link rel="shortcut icon" href="{% static 'bootstrap/img/favicon.png' %}">
   
-    <script type="text/javascript" src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bootstrap/js/scripts.js' %}"></script>
+  <script type="text/javascript" src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'bootstrap/js/scripts.js' %}"></script>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" />
+    <![endif]-->
+    <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet-src.js"></script>
+    <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.4"></script>
+    <script type="text/javascript" charset="utf-8">
+      $(function() {
+       /* var layer = new L.StamenTileLayer("toner");
+
+        var map = new L.Map("maps", {
+          center: new L.LatLng(37.7, -122.4),
+          zoom: 4
+        });
+        map.addLayer(layer);
+        */
+
+        var map = L.map('maps').setView([4.598055600146267, -74.07583329943009], 4);
+
+        // add an OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+      id: 'examples.map-i86knfo3'
+    }).addTo(map);
+
+        
+      });
+    </script>
 </head>
 
-<body>
-<div class="container">
-    <div class="row clearfix">
-        <div id="display_info" class="col-md-6 column">
-        </div>
+<body >
+<div class="container" id="container">
+  <div class="row clearfix"  id="display_map_info">
+    <div class="col-md-12 column" id="main_frame">
+          <div id="maps" class="col-md-10 column">
+              <div id="info">
+                      Welcome to the flot
+              </div>
+          </div>
     </div>
+  </div>
 </div>
 </body>
 </html>
