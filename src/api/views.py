@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User, Group
+from misc.models import Migrant, Abuse, CheckPoint
+
 from rest_framework import viewsets
 from api.serializers import UserSerializer, GroupSerializer
 from api.permissions import IsSuperUserOrReadOnly
@@ -21,4 +23,31 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
+
+class MigrantViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    permission_classes = (permissions.IsAuthenticated,)
+    allowed_methods = ('POST',)                
+    queryset = Migrant.objects.all()
+    serializer_class = GroupSerializer
+
+class AbuseViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    permission_classes = (permissions.IsAuthenticated,)
+    allowed_methods = ('POST',)            
+    queryset = Abuse.objects.all()
+    serializer_class = GroupSerializer
+
+class CheckPointViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    permission_classes = (permissions.IsAuthenticated,)
+    allowed_methods = ('POST',)            
+    queryset = CheckPoint.objects.all()
+    serializer_class = GroupSerializer
    
