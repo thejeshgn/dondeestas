@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Migrant, AbuseAdmin, CheckPoint
+from models import Migrant, Abuse, CheckPoint
 
 
 class AbuseAdmin(admin.ModelAdmin):

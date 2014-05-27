@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from datetime import datetime
 
@@ -17,9 +18,19 @@ MARTIAL_STATUS=(
     )
 
 ABUSE_TYPES =(
-    ('',''),
-    ('Others', 'Others')      
+    ('A01','Me extorsionaron las autoridades'),
+    ('A02','Me robaron los maquinistas del tren'),
+    ('A03','Me obligaron a transportar droga'),
+    ('A04','Le pagué a un “pollero” o “guía” para que me llevara a mi destino'),
+    ('A05','Vi como traficaban con órganos'),
+    ('A06','Me torturaron'),
+    ('A07','Vi asesinatos'),
+    ('A08','Me secuestraron'),
+    ('A09','Me usaron de esclavo (trata de personas)'),
+    ('A10','Me violaron'),
+    ('Others', 'Otro')      
     )
+
 
 # Create your models here.
 class Migrant(models.Model):
