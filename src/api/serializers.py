@@ -17,7 +17,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class MigrantSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Migrant
-        fields = ('pseudo','country','age','gender','country','martial','created','updated')
+        fields = ('pseudo','origin_country','age','gender','dest_country','martial','created','updated')
 
 class AbuseSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

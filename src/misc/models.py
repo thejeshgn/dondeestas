@@ -34,6 +34,9 @@ ABUSE_TYPES =(
 
 # Create your models here.
 class Migrant(models.Model):
+    def __unicode__(self):
+        return u'%s:%s:%s' % (self.id, self.pseudo, self.origin_country)
+
     pseudo          = models.CharField(max_length=200, unique=True)
     origin_country = models.CharField(max_length=50, blank=True,null=True)
     origin_lat      = models.CharField(max_length=20, blank=True,null=True)
@@ -56,6 +59,9 @@ class Abuse(models.Model):
 
 
 class CheckPoint(models.Model):
+    def __unicode__(self):
+        return u'%s:%s:%s' % (self.id, self.migrante.pseudo, self.city)
+
     migrante        = models.ForeignKey(Migrant)    
     lon             = models.CharField(max_length=20, blank=True,null=True)
     lat             = models.CharField(max_length=20, blank=True,null=True)

@@ -23,7 +23,7 @@ class AbuseAdmin(admin.ModelAdmin):
 
 
 class MigrantAdmin(admin.ModelAdmin):
-    list_display = ('pseudo','country','age','gender','country','martial','created','updated')
+    list_display = ('pseudo','origin_country','age','gender','dest_country','martial','created','updated')
     #list_filter = ['name',]
     search_fields = ('pseudo',)
 

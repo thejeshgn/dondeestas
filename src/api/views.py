@@ -3,7 +3,7 @@ from django.contrib.auth.models import User, Group
 from misc.models import Migrant, Abuse, CheckPoint
 
 from rest_framework import viewsets
-from api.serializers import UserSerializer, GroupSerializer
+from api.serializers import UserSerializer, GroupSerializer, AbuseSerializer, CheckPointSerializer, MigrantSerializer
 from api.permissions import IsSuperUserOrReadOnly
 from rest_framework import permissions
 from rest_framework import generics
@@ -31,7 +31,7 @@ class MigrantViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
     allowed_methods = ('POST',)                
     queryset = Migrant.objects.all()
-    serializer_class = GroupSerializer
+    serializer_class = MigrantSerializer
 
 class AbuseViewSet(viewsets.ModelViewSet):
     """
@@ -40,7 +40,7 @@ class AbuseViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
     allowed_methods = ('POST',)            
     queryset = Abuse.objects.all()
-    serializer_class = GroupSerializer
+    serializer_class = AbuseSerializer
 
 class CheckPointViewSet(viewsets.ModelViewSet):
     """
@@ -49,5 +49,5 @@ class CheckPointViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
     allowed_methods = ('POST',)            
     queryset = CheckPoint.objects.all()
-    serializer_class = GroupSerializer
+    serializer_class = CheckPointSerializer
    
