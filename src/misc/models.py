@@ -35,10 +35,14 @@ ABUSE_TYPES =(
 # Create your models here.
 class Migrant(models.Model):
     pseudo          = models.CharField(max_length=200, unique=True)
-    country         = models.CharField(max_length=50)
+    origin_country = models.CharField(max_length=50, blank=True,null=True)
+    origin_lat      = models.CharField(max_length=20, blank=True,null=True)
+    origin_lng      = models.CharField(max_length=20, blank=True,null=True)
     age             = models.IntegerField(default=0)
     gender          = models.CharField(max_length=15,choices=GENDER,default='Unknown')
-    country         = models.CharField(max_length=50)
+    dest_country    = models.CharField(max_length=50, blank=True,null=True)
+    dest_lat        = models.CharField(max_length=20, blank=True,null=True)
+    dest_lng        = models.CharField(max_length=20, blank=True,null=True)
     martial         = models.CharField(max_length=15,choices=MARTIAL_STATUS,default='Unknown')
     created         = models.DateTimeField(default=datetime.now)
     updated         = models.DateTimeField(default=datetime.now)
@@ -53,9 +57,9 @@ class Abuse(models.Model):
 
 class CheckPoint(models.Model):
     migrante        = models.ForeignKey(Migrant)    
-    lon             = models.IntegerField(default=0)
-    lat             = models.IntegerField(default=0)
-    other_location  = models.IntegerField(default=0)
+    lon             = models.CharField(max_length=20, blank=True,null=True)
+    lat             = models.CharField(max_length=20, blank=True,null=True)
+    other_location  = models.CharField(max_length=100, blank=True,null=True)
     city            = models.CharField(max_length=100)
     state           = models.CharField(max_length=100)
     country         = models.CharField(max_length=100)
