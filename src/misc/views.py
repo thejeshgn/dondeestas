@@ -3,11 +3,11 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.db import transaction
 from django.conf import settings
+from django.http import HttpResponse
+from django.views.generic import View
+from django.template.response import TemplateResponse
 
 
-def home(request):
-    errors = []
-    return render_to_response('home.html',{'errors':errors})
 
 
 
@@ -32,4 +32,8 @@ def displayThePath(request):
         #might required in future for showing captcha or banning
         return render_to_response('home.html',{'errors':errors})
 
+
+class Home(View):
+    def get(self, request, *args, **kwargs):
+        return TemplateResponse(request, 'home.html')
 

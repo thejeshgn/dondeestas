@@ -1,0 +1,19 @@
+#migrant{
+	background: no-repeat url("../img/TrainTrack.JPG");
+	height:1000px;
+    min-height:100%;
+}
+
+#family{
+	background: no-repeat url("../img/FamilyPics.jpg");
+	height:1000px;
+    min-height:100%;
+}
+
+
+#display_info{
+    background: no-repeat url("../img/TrainTrack.JPG");
+    height:1000px;
+    min-height:100%;
+    width:100%;
+}
