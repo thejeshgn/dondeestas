@@ -20,6 +20,7 @@ ABUSE_TYPES =(
     ('',''),
     ('Others', 'Others')      
     )
+
 # Create your models here.
 class Migrant(models.Model):
     pseudo          = models.CharField(max_length=200, unique=True)
@@ -32,14 +33,11 @@ class Migrant(models.Model):
     updated         = models.DateTimeField(default=datetime.now)
 
 
-
-
 class Abuse(models.Model):
     type            = models.CharField(max_length=100,choices=ABUSE_TYPES,default='Others')
     description     = models.CharField(max_length=2000)
     migrante        = models.ForeignKey(Migrant)
-    timestamp       = models.DateTimeField(default=datetime.now)
-
+    created         = models.DateTimeField(default=datetime.now)
 
 
 class CheckPoint(models.Model):
@@ -50,4 +48,4 @@ class CheckPoint(models.Model):
     city            = models.CharField(max_length=100)
     state           = models.CharField(max_length=100)
     country         = models.CharField(max_length=100)
-    date            = models.DateTimeField(default=datetime.now)
+    created         = models.DateTimeField(default=datetime.now)
