@@ -1,2 +1,39 @@
 {% load staticfiles %}
-<!DOCTYPE html><html><head><title>¿Dónde estás?</title> <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="screen" title="no title" charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"></head><body><header><h1><a href="#about">¿DÓNDE ESTÁS?</a></h1></header> <section><div id="registra"><div class="migrante"><div class="formulario"><h2><strong>REGISTRO</strong> DE MIGRANTES</h2><p>Escribe tu nombre falso (pseudónimo)</p><form action="/checkpoint" method="post"><label for="seudonimo">Seudonimo </label><input id="seudonimo" placeholder="" required="" type="text"> <input value="Entrar" type="submit"></form></div><div class="nuevo"><a href="registro.html">Soy un migrante nuevo</a></div></div></div><div id="encuentra"><div class="busqueda"><h2><strong>BÚSQUEDA</strong> DE MIGRANTES</h2><p>Escribe el nombre falso (pseudónimo) de la persona migrante que quieres buscar</p><form action="/buscar" method="post"><label for="seudonimo">Seudonimo </label><input id="seudonimo" placeholder="" required="" type="text"><input value="Buscar" type="submit"></form></div></div></section></body></html> 
+<!DOCTYPE html>
+<html>
+<head><title>¿Dónde estás?</title> 
+   <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="screen" title="no title" charset="utf-8">
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body>
+   <header><h1><a href="#about">¿DÓNDE ESTÁS?</a></h1></header> 
+   <section>
+      <div id="registra">
+         <div class="migrante">
+            <div class="formulario">
+               <h2><strong>REGISTRO</strong> DE MIGRANTES</h2>
+               <p>Escribe tu nombre falso (pseudónimo)</p>
+               <form action="/checkpoint" method="post">
+                  <label for="seudonimo">Seudonimo </label>
+                  <input id="seudonimo" placeholder="" required="" type="text"> 
+                  <input value="Entrar" type="submit">
+               </form>
+            </div>
+            <div class="nuevo">
+               <a href="registro.html">Soy un migrante nuevo</a>
+            </div>
+         </div>
+      </div>
+      <div id="encuentra">
+         <div class="busqueda">
+            <h2><strong>BÚSQUEDA</strong> DE MIGRANTES</h2>
+            <p>Escribe el nombre falso (pseudónimo) de la persona migrante que quieres buscar</p><form action="/buscar" method="post">
+               <label for="seudonimo">Seudonimo </label>
+               <input id="seudonimo" placeholder="" required="" type="text">
+               <input value="Buscar" type="submit">
+            </form>
+      </div>
+   </div>
+</section>
+</body>
+</html> 
