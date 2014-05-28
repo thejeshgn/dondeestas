@@ -49,7 +49,22 @@ div#registra .migrante .nuevo a:hover{font-weight:bold;}
     background-color: white; 
     z-index: 1;
     top:50%;
-    left:10%;
+    left:25%;
+    width: 250px;
+    height: 200px;    
+    border: 1px solid yellow;
+    padding: 10px;
+    opacity:0.6;
+
+}
+
+#question {
+    position: absolute;
+    border-radius: 10px;
+    background-color: white; 
+    z-index: 1;
+    top:50%;
+    left:30%;
     width: 250px;
     height: 140px;    
     border: 1px solid yellow;

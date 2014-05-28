@@ -101,7 +101,7 @@ class Register(View):
 
 
 
-class CheckPoint(View):
+class CheckPointView(View):
     def post(self, request, *args, **kwargs):
         pseudo_name =  request.POST.get('searchname',None) 
         errors = []
