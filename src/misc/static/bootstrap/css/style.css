@@ -21,13 +21,16 @@ html, body
 }
 
 #container{
+    background: no-repeat url("../img/trackfull.jpg");
     height:99%;
 }
 
 #display_map_info{
-    background: no-repeat url("../img/trackfull.jpg");
     height:99%;
     width:100%;
+    margin-left:350px;
+    margin-top:200px;
+
 }
 
 #maps {
