@@ -26,30 +26,19 @@ html, body
 }
 
 #display_map_info{
+    border-radius: 10px;
     height:99%;
     width:100%;
-    margin-left:350px;
-    margin-top:200px;
+    margin:10%;
 
 }
 
 #maps {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 660px;
-    height: 400px;
-    z-index: 100;
+    border-radius: 10px;
+    width: 80%;
+    height: 80%;
 }
 
-#svgMapOverlay {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 660px;
-    height: 400px;
-    z-index: 200;
-}
 
 #info {
     position: absolute;
@@ -64,4 +53,10 @@ html, body
     padding: 10px;
     opacity:0.6;
 
+}
+#roads path {
+  stroke: rgb(255,0,0);
+  fill: none;
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
 }
