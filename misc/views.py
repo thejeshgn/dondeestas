@@ -78,3 +78,7 @@ class Home(View):
     def get(self, request, *args, **kwargs):
         return TemplateResponse(request, 'home.html')
 
+class Register(View):
+    def get(self, request, *args, **kwargs):
+        return TemplateResponse(request, 'register.html')
+
