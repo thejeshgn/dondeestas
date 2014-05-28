@@ -26,6 +26,14 @@
       </div>
       <div id="encuentra">
          <div class="busqueda">
+        {% if errors %}
+            <ol>
+            {% for error in errors %}
+                <li>{{ error|escape }}</li>
+            {% endfor %}
+            </ol>
+         {% endif %}
+
             <h2><strong>BÚSQUEDA</strong> DE MIGRANTES</h2>
             <p>Escribe el nombre falso (pseudónimo) de la persona migrante que quieres buscar</p><form action="/path/" method="post">
                {% csrf_token %}
