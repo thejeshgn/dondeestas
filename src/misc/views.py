@@ -12,8 +12,8 @@ from models import Migrant, CheckPoint
 
 
 class DisplayPath(View):
-    def get(self, request, *args, **kwargs):
-        pseudo_name =  request.GET.get('pseudo_name',None) 
+    def post(self, request, *args, **kwargs):
+        pseudo_name =  request.POST.get('searchname',None) 
         errors = []
         if pseudo_name:
             migrant = Migrant.objects.get(pseudo=pseudo_name)

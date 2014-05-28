@@ -67,7 +67,8 @@
 		</div>
 	<div id="family" class="col-md-6 column">
 
-		<form class="form-horizontal">
+		<form class="form-horizontal" method="post" action="/path/">
+            {% csrf_token %}
 		<fieldset>
 
 		<!-- Form Name -->
