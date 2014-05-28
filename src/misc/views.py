@@ -23,8 +23,8 @@ class DisplayPath(View):
                 #log, the guy who searched, ip, pseudo name, type of search
                 #might required in future for showing captcha or banning
                 return redirect('/', errors=errors)
-                checkpoints = CheckPoint.objects.filter(migrante=migrant)
-                return render_to_response('display_migrant_location.html',{'migrant':migrant,'checkpoints':checkpoints,'errors':errors})
+            checkpoints = CheckPoint.objects.filter(migrante=migrant)
+            return render_to_response('display_migrant_location.html',{'migrant':migrant,'checkpoints':checkpoints,'errors':errors})
         else:
             #error: please enter a pseudo name
             errors.append('Please enter a valid Pseudo name')

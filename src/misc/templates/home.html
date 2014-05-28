@@ -66,6 +66,13 @@
 
 		</div>
 	<div id="family" class="col-md-6 column">
+        {% if errors %}
+            <ol>
+            {% for error in errors %}
+                <li><strong>{{ error|escape }}</strong></li>
+            {% endfor %}
+            </ol>
+        {% endif %}
 
 		<form class="form-horizontal" method="post" action="/path/">
             {% csrf_token %}
