@@ -26,21 +26,35 @@
                   + "/999/256/{Z}/{X}/{Y}.png")
                   .hosts(["a.", "b.", "c.", ""])));
 
-              var featAtoB = {type: "Feature", geometry: {type: "LineString", coordinates: 
-              {{path_covered|safe}}
-            },properties: {prop0: "value0",prop1: 0.0}};
+                //FOR MAP WITH GRAY BG
+                /*var map = po.map()
+                    .container(document.getElementById("maps").appendChild(po.svg("svg")))
+                    .center({lat: 39, lon: -96})
+                    .zoom(4)
+                    .zoomRange([3, 7])
+                    .add(po.interact());
 
+                map.add(po.image()
+                    .url(po.url("http://{S}tile.cloudmade.com"
+                    + "/1a1b06b230af4efdbb989ea99e9841af" // http://cloudmade.com/register
+                    + "/20760/256/{Z}/{X}/{Y}.png")
+                    .hosts(["a.", "b.", "c.", ""])));*/
+
+
+                var path_covered = {"type": "Feature", "geometry": {"type": "MultiLineString", "coordinates": 
+                    {{path_covered|safe}}
+            },"properties": {"prop0": "value0","prop1": 0.0}};
 
               map.add(po.geoJson()
-                  .features([featAtoB])
+                  .features([path_covered])
                   .id("streets")
                   .zoom(2)
                   .tile(false).on("load", po.stylist().attr("stroke", "#fff22f").attr("stroke-width", ".3")));
 
 
-              var future_path = {type: "Feature", geometry: {type: "LineString", coordinates: 
+              var future_path = {"type": "Feature", "geometry": {"type": "LineString","coordinates": 
               {{future_path|safe}}
-            },properties: {prop0: "value0",prop1: 0.0}};
+            },"properties": {"prop0": "value0","prop1": 0.0}};
 
 
               map.add(po.geoJson()
