@@ -2,19 +2,20 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.contrib import admin,auth
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
-import misc.views
+from misc import views
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-     url(r'^api/', include('api.urls')),
+    url(r'^$', views.Home.as_view(),),
+    url(r'path/', views.DisplayPath.as_view(),name='path',),
+)
 
-    #admin related urls
+urlpatterns +=  patterns('',
+    # Examples:
+    url(r'^api/', include('api.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin_tools/', include('admin_tools.urls')),
-    url(r'^path/', misc.views.DisplayPath.as_view(),name='path',),
 
 )
 
