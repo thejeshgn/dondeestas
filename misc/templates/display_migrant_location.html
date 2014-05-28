@@ -64,6 +64,16 @@
                   .tile(false).on("load", po.stylist().attr("stroke", "#fff22f").attr("stroke-width", ".3")));
 
 
+              var future_path = {type: "Feature", geometry: {type: "LineString", coordinates: 
+              {{future_path|safe}}
+            },properties: {prop0: "value0",prop1: 0.0}};
+
+
+              map.add(po.geoJson()
+                  .features([future_path])
+                  .id("streets")
+                  .zoom(2)
+                  .tile(false).on("load", po.stylist().attr("stroke", "#fff").attr("stroke-width", ".3").attr("stroke-dasharray",".5,.5" )));
 
 
               map.add(po.compass()

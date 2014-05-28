@@ -39,8 +39,29 @@ class DisplayPath(View):
             path_covered = json.dumps(lineArray)
 
 
+            lineArray = []
+            no_of_checkpoints = len(checkpoints)
+            if checkpoints and no_of_checkpoints > 0: 
+                last_checkpoint = checkpoints[no_of_checkpoints-1]
+                point = []
+                point.append(float(last_checkpoint.lon))
+                point.append(float(last_checkpoint.lat))
+                lineArray.append(point)
+            else:
+                point = []
+                point.append(float(migrant.origin_lng))
+                point.append(float(migrant.origin_lat))
+                lineArray.append(point)  
 
-            return render_to_response('display_migrant_location.html',{'migrant':migrant,'path_covered':path_covered,'errors':errors})
+            point = []
+            point.append(float(migrant.dest_lng))
+            point.append(float(migrant.dest_lat))
+            lineArray.append(point)  
+
+            future_path= json.dumps(lineArray)
+
+
+            return render_to_response('display_migrant_location.html',{'migrant':migrant,'path_covered':path_covered,'future_path':future_path,'errors':errors})
         else:
             #error: please enter a pseudo name
             errors.append('Please enter a valid Pseudo name')
