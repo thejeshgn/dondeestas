@@ -31,47 +31,56 @@
   <script type="text/javascript" src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'bootstrap/js/scripts.js' %}"></script>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
-    <!--[if lte IE 8]>
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" />
-    <![endif]-->
-    <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet-src.js"></script>
-    <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.4"></script>
+  <link rel="stylesheet" href=" {% static 'jvectormap/jquery-jvectormap-1.2.2.css' %}" type="text/css" media="screen"/>
+  <script src=" {% static 'jvectormap/jquery-jvectormap-1.2.2.min.js' %}"></script>
+  <script src=" {% static 'jvectormap/jquery-jvectormap-world-mill-en.js' %}"></script>
+  <script src=" {% static 'jvectormap/svg.min.js' %}"></script>
+  <script src=" {% static 'jvectormap/svg.path.js' %}"></script>
+
+
     <script type="text/javascript" charset="utf-8">
-      $(function() {
-       /* var layer = new L.StamenTileLayer("toner");
+var markerArray = [
+  {name:'Houston', latLng:[29.761993,-95.369568]},
+  {name:'New York', latLng:[40.710833,-74.002533]},
+  {name:'Kansas City', latLng:[39.115145,-94.633484]}
+];
+    
+$(function(){
+  var map = $('#maps').vectorMap({
+    map: 'world_mill_en',
+    zoomMin: 1,
+    zoomMax: 15,
+    markers: markerArray
+  });
+    
+  var map = $('#maps').vectorMap('get', 'mapObject');
+  var draw = SVG('svgMapOverlay').size(660, 400);
+  //console.log(draw);
+  var coords1 = map.latLngToPoint(markerArray[0].latLng[0],markerArray[0].latLng[1]);
+  var coords2 = map.latLngToPoint(markerArray[1].latLng[0],markerArray[1].latLng[1]);
+  console.log(draw.path().attr({ fill: 'none',stroke: '#c00', 'stroke-width': 2 }).M(coords1.x, coords1.y));
 
-        var map = new L.Map("maps", {
-          center: new L.LatLng(37.7, -122.4),
-          zoom: 4
-        });
-        map.addLayer(layer);
-        */
+  draw.path().attr({ fill: 'none',stroke: '#c00', 'stroke-width': 2 }).M(coords1.x, coords1.y).L(coords2.x, coords2.y);
 
-        var map = L.map('maps').setView([4.598055600146267, -74.07583329943009], 4);
 
-        // add an OpenStreetMap tile layer
-        L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-      id: 'examples.map-i86knfo3'
-    }).addTo(map);
+//let's do another!
+  var coords1 = map.latLngToPoint(markerArray[1].latLng[0],markerArray[1].latLng[1]);
+  var coords2 = map.latLngToPoint(markerArray[2].latLng[0],markerArray[2].latLng[1]);
+    draw
+        .path()
+        .attr({ fill: 'none',stroke: '#c00', 'stroke-width': 2 })
+        .M(coords1.x, coords1.y)
+        .L(coords2.x, coords2.y);
 
-        
-      });
-    </script>
+}); // end Jquery call    </script>
 </head>
 
 <body >
 <div class="container" id="container">
   <div class="row clearfix"  id="display_map_info">
     <div class="col-md-12 column" id="main_frame">
-          <div id="maps" class="col-md-10 column">
-              <div id="info">
-                      Welcome to the flot
-              </div>
+          <div id="svgMapOverlay"></div>
+          <div id="maps">
           </div>
     </div>
   </div>

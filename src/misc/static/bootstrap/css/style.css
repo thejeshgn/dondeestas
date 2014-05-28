@@ -31,12 +31,21 @@ html, body
 }
 
 #maps {
-border-radius: 10px; 
-height: 80%;
-width: 80%;
-margin-left: 10%;
-margin-top: 10%;
-opacity:1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 660px;
+    height: 400px;
+    z-index: 100;
+}
+
+#svgMapOverlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 660px;
+    height: 400px;
+    z-index: 200;
 }
 
 #info {
