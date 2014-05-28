@@ -101,29 +101,29 @@ class Register(View):
 
 
 
-# class CheckPoint(View):
-#     def post(self, request, *args, **kwargs):
-#         pseudo_name =  request.POST.get('searchname',None) 
-#         errors = []
-#         migrant = None
-#         if pseudo_name:
-#             try:
-#                 migrant = Migrant.objects.get(pseudo=pseudo_name)
-#             except Migrant.DoesNotExist:
-#                 #error, just say migrant doesnt exist
-#                 errors.append('Pseudo name not found. Please enter a valid one.')
-#                 #log, the guy who searched, ip, pseudo name, type of search
-#                 #might required in future for showing captcha or banning
-#                 return redirect('/', errors=errors)
-#             return render_to_response('display_migrant_location2.html',{'migrant':migrant,'path_covered':path_covered,'future_path':future_path,'errors':errors})
-#         else:
-#             #error: please enter a pseudo name
-#             errors.append('Please enter a valid Pseudo name')
-#             #log, the guy who searched, ip, type of search
-#             #might required in future for showing captcha or banning
-#             return redirect('/', errors=errors)
+class CheckPoint(View):
+    def post(self, request, *args, **kwargs):
+        pseudo_name =  request.POST.get('searchname',None) 
+        errors = []
+        migrant = None
+        if pseudo_name:
+            try:
+                migrant = Migrant.objects.get(pseudo=pseudo_name)
+            except Migrant.DoesNotExist:
+                #error, just say migrant doesnt exist
+                errors.append('Pseudo name not found. Please enter a valid one.')
+                #log, the guy who searched, ip, pseudo name, type of search
+                #might required in future for showing captcha or banning
+                return redirect('/', errors=errors)
+            return render_to_response('checkpoint.html',{})
+        else:
+            #error: please enter a pseudo name
+            errors.append('Please enter a valid Pseudo name')
+            #log, the guy who searched, ip, type of search
+            #might required in future for showing captcha or banning
+            return redirect('/', errors=errors)
 
-#     def get(self, request, *args, **kwargs):
-#         errors = []
-#         errors.append('Pseudo name not found. Please enter a valid one.')
-#         return redirect('/',errors=errors)
+    def get(self, request, *args, **kwargs):
+        errors = []
+        errors.append('Pseudo name not found. Please enter a valid one.')
+        return redirect('/',errors=errors)
