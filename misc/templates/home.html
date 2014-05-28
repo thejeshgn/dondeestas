@@ -27,9 +27,10 @@
       <div id="encuentra">
          <div class="busqueda">
             <h2><strong>BÚSQUEDA</strong> DE MIGRANTES</h2>
-            <p>Escribe el nombre falso (pseudónimo) de la persona migrante que quieres buscar</p><form action="/buscar" method="post">
+            <p>Escribe el nombre falso (pseudónimo) de la persona migrante que quieres buscar</p><form action="/path/" method="post">
+               {% csrf_token %}
                <label for="seudonimo">Seudonimo </label>
-               <input id="seudonimo" placeholder="" required="" type="text">
+               <input id="seudonimo" name="searchname" placeholder="" required="" type="text">
                <input value="Buscar" type="submit">
             </form>
       </div>
