@@ -1,0 +1,68 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title></title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script type="text/javascript" src="{% static 'jquery.min.js' %}"></script>
+<script src=" {% static 'polymaps.min.js' %}"></script>
+
+
+    <script type="text/javascript" charset="utf-8">    
+        $(function(){
+              var po = org.polymaps;
+
+
+              var map = po.map()
+                  .container(document.getElementById("maps").appendChild(po.svg("svg")))
+                  .center({lat:  27.68352808378776, lon: -105.1171875})
+                  .zoom(5)
+                  .zoomRange([3, 16])
+                  .add(po.interact());
+
+              map.add(po.image()
+                  .url(po.url("http://{S}tile.cloudmade.com"
+                  + "/1a1b06b230af4efdbb989ea99e9841af" // http://cloudmade.com/register
+                  + "/999/256/{Z}/{X}/{Y}.png")
+                  .hosts(["a.", "b.", "c.", ""])));
+
+              var featAtoB = {type: "Feature", geometry: {type: "LineString", coordinates: 
+              {{path_covered|safe}}
+            },properties: {prop0: "value0",prop1: 0.0}};
+
+
+              map.add(po.geoJson()
+                  .features([featAtoB])
+                  .id("streets")
+                  .zoom(2)
+                  .tile(false).on("load", po.stylist().attr("stroke", "#fff22f").attr("stroke-width", ".3")));
+
+
+              var future_path = {type: "Feature", geometry: {type: "LineString", coordinates: 
+              {{future_path|safe}}
+            },properties: {prop0: "value0",prop1: 0.0}};
+
+
+              map.add(po.geoJson()
+                  .features([future_path])
+                  .id("streets")
+                  .zoom(2)
+                  .tile(false).on("load", po.stylist().attr("stroke", "#fff").attr("stroke-width", ".3").attr("stroke-dasharray",".5,.5" )));
+
+
+              map.add(po.compass()
+                  .pan("none"));
+
+        }); // end Jquery call    
+</script>
+</head>
+<body>
+    <section class="datosregistro">
+        <div id="registra">
+                          <div id="maps">
+                          </div>
+
+        </div>
+    </section>
+</body>
+</html> 

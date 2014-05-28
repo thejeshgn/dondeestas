@@ -1,1 +1,59 @@
-html,body,h1,h2,p{padding:0;margin:0;}html,body,section{height:100%;}body{color:#fff;background:#fff;font-size:20px;font-family:Verdana,Geneva,sans-serif}header{margin-top:4em;text-align:center;position:absolute;display:block;width:100%;z-index:10;}header a,header a:visited{text-decoration:none;color:#000;display:inline-block;margin:0 auto;padding:.4em .6em;background:#fff;border-radius:.5em;;border:solid 3px #C4AE27;}header a:hover{}header a h1{font-size:1.5em;text-transform:uppercase;}section{display:block;width:100%;}section h2{font-weight:normal;text-transform:uppercase;}div#registra,div#encuentra{width:calc(50% - 5px);display:inline-block;padding-top:10em;text-align:center;height:calc(100% - 10em);}div#registra{border-right:4px solid #fff;}div#registra .migrante,div#encuentra .busqueda{display:inline-block;text-align:left;border-radius:.5em;border:solid 3px #C4AE27;background:rgba(44,44,44,.95);padding:1em 1em;width:80%;vertical-align:top;}div#registra .migrante p,div#encuentra .busqueda p{color:#858688;margin-top:.5em;}div#registra{background:url('../images/vias.jpg') center left;background-size:auto 120%;}div#encuentra{background:url('../images/desaparecidos.jpg') center;background-size:auto 200%;}form{display:block;margin:.8em 0;}form label{display:none;}form input{display:inline-block;border-radius:.5em;border:solid 2px #C4AE27;padding:.2em;font-weight:bold;font-size:.8em;width:70%;}form input[type="submit"]{display:inline-block;margin-left:1em;width:20%;}form input[type="submit"]:hover{border:solid 1px #fff;background:#C4AE27;}div#registra .migrante .nuevo{}div#registra .migrante .nuevo a,div#registra .migrante .nuevo a:visited{color:#CCB328;text-decoration:none;}div#registra .migrante .nuevo a:hover{font-weight:bold;}.datosregistro div#registra{width:100%;border:0;display:block;background:url('../images/vias.jpg') center left;background-size:auto 150%;text-align:left;height:100%;padding:0;}.datosregistro div#registra .migrante{width:34%;margin:5% 0 0 10%;}.datosregistro form label,.datosregistro form input{display:block;width:95%;padding:.5em;}.datosregistro form label{margin-top:.5em;}div.bt{width:98%;text-align:right;margin-top:1em;padding:0;}.datosregistro form input[type="submit"]{width:20%;display:inline-block;margin:0;background:#fff;}
+html,body,h1,h2,p{padding:0;margin:0;}
+html,body,section{height:100%;}
+body{color:#fff;background:#fff;font-size:20px;font-family:Verdana,Geneva,sans-serif}
+header{margin-top:4em;text-align:center;position:absolute;display:block;width:100%;z-index:10;}
+header a,header a:visited{text-decoration:none;color:#000;display:inline-block;margin:0 auto;padding:.4em .6em;background:#fff;border-radius:.5em;;border:solid 3px #C4AE27;}
+header a:hover{}header a h1{font-size:1.5em;text-transform:uppercase;}
+section{display:block;width:100%;}
+section h2{font-weight:normal;text-transform:uppercase;}
+div#registra,div#encuentra{width:calc(50% - 5px);display:inline-block;padding-top:10em;text-align:center;height:calc(100% - 10em);}
+div#registra{border-right:4px solid #fff;}
+div#registra .migrante,div#encuentra .busqueda{display:inline-block;text-align:left;border-radius:.5em;border:solid 3px #C4AE27;background:rgba(44,44,44,.95);padding:1em 1em;width:80%;vertical-align:top;}
+div#registra .migrante p,div#encuentra .busqueda p{color:#858688;margin-top:.5em;}
+div#registra{background:url('../images/vias.jpg') center left;background-size:auto 120%;}
+div#encuentra{background:url('../images/desaparecidos.jpg') center;background-size:auto 200%;}
+form{display:block;margin:.8em 0;}
+form label{display:none;}
+form input{display:inline-block;border-radius:.5em;border:solid 2px #C4AE27;padding:.2em;font-weight:bold;font-size:.8em;width:70%;}
+form input[type="submit"]{display:inline-block;margin-left:1em;width:20%;}
+form input[type="submit"]:hover{border:solid 1px #fff;background:#C4AE27;}
+div#registra .migrante .nuevo{}
+div#registra .migrante .nuevo a,div#registra .migrante .nuevo a:visited{color:#CCB328;text-decoration:none;}
+div#registra .migrante .nuevo a:hover{font-weight:bold;}
+.datosregistro div#registra{width:100%;border:0;display:block;background:url('../images/vias.jpg') center left;background-size:auto 150%;text-align:left;height:100%;padding:0;}
+.datosregistro div#registra .migrante{width:34%;margin:5% 0 0 10%;}
+.datosregistro form label,.datosregistro form input{display:block;width:95%;padding:.5em;}
+.datosregistro form label{margin-top:.5em;}div.bt{width:98%;text-align:right;margin-top:1em;padding:0;}
+.datosregistro form input[type="submit"]{width:20%;display:inline-block;margin:0;background:#fff;}
+#display_map_info{
+    border-radius: 10px;
+    height:99%;
+    width:100%;
+    margin:10%;
+
+}
+
+#maps {
+    float: right;
+    border-radius: 10px;
+    width: 70%;
+    height: 80%;
+    margin-top:5%;    
+    margin-right:10%;
+}
+
+
+#info {
+    position: absolute;
+    border-radius: 10px;
+    background-color: white; 
+    z-index: 1;
+    top:50%;
+    left:10%;
+    width: 250px;
+    height: 140px;    
+    border: 1px solid yellow;
+    padding: 10px;
+    opacity:0.6;
+
+}

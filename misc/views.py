@@ -61,7 +61,7 @@ class DisplayPath(View):
             future_path= json.dumps(lineArray)
 
 
-            return render_to_response('display_migrant_location.html',{'migrant':migrant,'path_covered':path_covered,'future_path':future_path,'errors':errors})
+            return render_to_response('display_migrant_location2.html',{'migrant':migrant,'path_covered':path_covered,'future_path':future_path,'errors':errors})
         else:
             #error: please enter a pseudo name
             errors.append('Please enter a valid Pseudo name')
