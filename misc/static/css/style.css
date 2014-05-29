@@ -59,16 +59,25 @@ div#registra .migrante .nuevo a:hover{font-weight:bold;}
 }
 
 #question2 {
-    position: absolute;
     border-radius: 10px;
-    background-color: white; 
-    z-index: 1;
     top:50%;
-    left:30%;
-    width: 250px;
-    height: 140px;    
+    left:25%;
+    width: 450px;
+    height: 200px;    
     border: 1px solid yellow;
     padding: 10px;
-    opacity:0.6;
-
 }
+
+
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
+
+#question {
+    display:none;
+}
+
+/* Overlay */
+#simplemodal-overlay {background-color:#000;}
+
+/* Container */
