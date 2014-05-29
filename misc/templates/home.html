@@ -13,9 +13,10 @@
             <div class="formulario">
                <h2><strong>REGISTRO</strong> DE MIGRANTES</h2>
                <p>Escribe tu nombre falso (pseudónimo)</p>
-               <form action="/checkpoint" method="post">
+               <form action="/checkin/" method="post">
+                  {% csrf_token %}
                   <label for="seudonimo">Seudonimo </label>
-                  <input id="seudonimo" placeholder="" required="" type="text"> 
+                  <input id="seudonimo" name="searchname" placeholder="" required="" type="text"> 
                   <input value="Entrar" type="submit">
                </form>
             </div>

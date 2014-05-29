@@ -27,20 +27,37 @@ class DisplayPath(View):
                 #might required in future for showing captcha or banning
                 return redirect('/', errors=errors)
 
+            #future path of the migrant
             checkpoints = CheckPoint.objects.filter(migrante=migrant)
-            lineArray = []
             point = []
             point.append(float(migrant.origin_lng))
             point.append(float(migrant.origin_lat))
-            lineArray.append(point)  
-            for checkpoint in checkpoints:
+            multiLineArray = []
+            for i in range(0,len(checkpoints)):
+                lineArray = []
+                #starting point
+                if i ==0:
+                    lineArray.append(point)  
+                else:
+                    checkpoint = checkpoints[i-1]
+                    point = []
+                    point.append(float(checkpoint.lon))
+                    point.append(float(checkpoint.lat))
+                    lineArray.append(point)
+
+                #endpoint
+                checkpoint = checkpoints[i]
                 point = []
                 point.append(float(checkpoint.lon))
                 point.append(float(checkpoint.lat))
                 lineArray.append(point)
-            path_covered = json.dumps(lineArray)
+                multiLineArray.append(lineArray)
 
 
+            path_covered = json.dumps(multiLineArray)
+
+
+            #future path of the migrant
             lineArray = []
             no_of_checkpoints = len(checkpoints)
             if checkpoints and no_of_checkpoints > 0: 
@@ -99,3 +116,31 @@ def MigrantCreate(request):
     args['form'] = form
 
     return render_to_response('register.html', args)
+
+
+class CheckPointView(View):
+    def post(self, request, *args, **kwargs):
+        pseudo_name =  request.POST.get('searchname',None) 
+        errors = []
+        migrant = None
+        if pseudo_name:
+            try:
+                migrant = Migrant.objects.get(pseudo=pseudo_name)
+            except Migrant.DoesNotExist:
+                #error, just say migrant doesnt exist
+                errors.append('Pseudo name not found. Please enter a valid one.')
+                #log, the guy who searched, ip, pseudo name, type of search
+                #might required in future for showing captcha or banning
+                return redirect('/', errors=errors)
+            return render_to_response('checkpoint.html',{})
+        else:
+            #error: please enter a pseudo name
+            errors.append('Please enter a valid Pseudo name')
+            #log, the guy who searched, ip, type of search
+            #might required in future for showing captcha or banning
+            return redirect('/', errors=errors)
+
+    def get(self, request, *args, **kwargs):
+        errors = []
+        errors.append('Pseudo name not found. Please enter a valid one.')
+        return redirect('/',errors=errors)

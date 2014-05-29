@@ -1,0 +1,81 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title></title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script type="text/javascript" src="{% static 'jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'jqueryui/js/jquery-ui-1.10.4.custom.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'jqueryui/css/eggplant/jquery-ui-1.10.4.custom.min.css' %}">
+
+<script src=" {% static 'polymaps.min.js' %}"></script>
+
+
+    <script type="text/javascript" charset="utf-8">    
+        $(function(){
+              var po = org.polymaps;
+
+
+              var map = po.map()
+                  .container(document.getElementById("maps").appendChild(po.svg("svg")))
+                  .center({lat:  27.68352808378776, lon: -105.1171875})
+                  .zoom(4)
+                  .zoomRange([3, 16])
+                  .add(po.interact());
+
+              map.add(po.image()
+                  .url(po.url("http://{S}tile.cloudmade.com"
+                  + "/1a1b06b230af4efdbb989ea99e9841af" // http://cloudmade.com/register
+                  + "/999/256/{Z}/{X}/{Y}.png")
+                  .hosts(["a.", "b.", "c.", ""])));
+
+                if (navigator.geolocation) {
+                    var latitude;
+                    var longitude;
+                    navigator.geolocation.getCurrentPosition(function(position){
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+                    console.log(longitude);
+                    console.log(latitude);
+                    map.center({lat: latitude, lon: longitude});
+                  
+                    present_location ={"type": "Feature","properties": {},"geometry": { "type": "Point","coordinates": [longitude,latitude]}};
+  
+                    map.add(po.geoJson()
+                    .features([present_location])
+                    .id("points")
+                    .zoom(2)
+                    .tile(false).on("load", po.stylist().attr("stroke", "#fff22f").attr("stroke-width", ".3").attr("r",1)));               
+
+                    });
+               
+
+                    //http://api.geonames.org/findNearbyPlaceNameJSON?lng=9.263783600000002&lat=45.9847368&username=thejeshgn
+                    //make an AJAX Call to get the place name
+
+                    $( "#question" ).dialog({
+                      dialogClass: "no-close",
+                    });
+               
+                }else {
+                    alert("Geolocation API is not supported in your browser. :(");
+                }
+ 
+
+
+
+        }); // end Jquery call    
+</script>
+</head>
+<body>
+    <section class="datosregistro">
+        <div id="registra">
+                          <div id="maps">
+                          </div>
+                            <div id="question">Your freshly roasted coffee has shipped! Attached is your sales receipt which contains your tracking number. Please don't hesitate to contact us if you have any questions.Thank you for your business - we appreciate it very much.Sincerely,
+                            </div>
+
+        </div>
+    </section>
+</body>
+</html> 
