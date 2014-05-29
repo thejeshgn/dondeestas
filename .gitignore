@@ -50,6 +50,7 @@ coverage.xml
 *.pot
 
 venv/
+db.sqlite3
 
 # Sphinx documentation
 docs/_build/
