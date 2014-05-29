@@ -76,6 +76,7 @@
                            model_content_html = model_content_html +'<form>';
                            model_content_html = model_content_html +'<input name="longitude" type="hidden" value="'+longitude+'" />';
                            model_content_html = model_content_html +'<input name="latitude" type="hidden" value="'+latitude+'" />';
+                           model_content_html = model_content_html +'<input name="pseudo_name" type="hidden" value="{{migrant.pseudo|safe}}" />';
 
                            model_content_html = model_content_html +'<input type="submit" value="Yes" /><input type="button" value="No" /><input type="button" value="Cancel" />';
                            model_content_html = model_content_html +'</form>';
