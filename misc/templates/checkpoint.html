@@ -28,8 +28,8 @@ function enablePlacesAPI(){
     var place = autocomplete.getPlace();
     $('#longitude').val(place.geometry.location.lng());
     $('#latitude').val(place.geometry.location.lat());    
-    console.log(lat);
-    console.log(lng);
+    console.log( $('#longitude').val());
+    console.log($('#latitude').val());
     });
 }
 
@@ -48,7 +48,9 @@ function enablePlacesAPI(){
   #simplemodal-container input[type="submit"]:hover{border:solid 1px #fff;background:#C4AE27;}
   #simplemodal-container input[type="button"]{display:inline-block;margin-left:1em;width:20%;}
   #simplemodal-container input[type="button"]:hover{border:solid 1px #fff;background:#C4AE27;}
-
+.pac-container, .pac-item {
+  z-index:10000000;
+}
 </style>
 
 
@@ -114,7 +116,7 @@ function enablePlacesAPI(){
 
                             $("#question").html(model_content_html);
                             $('#search_place').hide();
-                            $('#question').modal({position: [40,40]});
+                            $('#question').modal({position: [40,40], focus:false});
       
                         });
 
