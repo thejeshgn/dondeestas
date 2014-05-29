@@ -11,6 +11,9 @@ urlpatterns = patterns('',
     url(r'path/', views.DisplayPath.as_view(),name='path',),
     url(r'^register/$', views.MigrantCreate),
     url(r'checkin/', views.CheckPointView.as_view(),name='register',),
+    url(r'checkin_save/', views.CheckPointSave.as_view(),name='register',),
+
+
 
 )
 

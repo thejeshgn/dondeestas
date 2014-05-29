@@ -9,8 +9,14 @@ from django.views.generic import View
 from django.template.response import TemplateResponse
 from models import Migrant, CheckPoint
 from misc.forms import MigrantForm
-import json
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
+import json
+import requests
+import logging
+
+logger = logging.getLogger(__name__)
 
 class DisplayPath(View):
     def post(self, request, *args, **kwargs):
@@ -146,11 +152,15 @@ class CheckPointView(View):
         return redirect('/',errors=errors)
 
 class CheckPointSave(View):
-    def post(self, request, *args, **kwargs):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, *args, **kwargs):
+        return super(CheckPointSave, self).dispatch(*args, **kwargs)
+
+    def post(self, request, *args, **kwargs):        
         pseudo_name =  request.POST.get('pseudo_name',None) 
         latitude =  request.POST.get('latitude',None) 
         longitude =  request.POST.get('longitude',None) 
-
+        print pseudo_name, latitude, longitude
         errors = []
         migrant = None
         if pseudo_name:
@@ -163,9 +173,14 @@ class CheckPointSave(View):
                 #might required in future for showing captcha or banning
                 return redirect('/', errors=errors)
 
+            print "got the name"
             #if valid migrant, and location
             if latitude and longitude:
-                checkpoint = CheckPoint()
+                url = 'http://api.geonames.org/findNearbyPlaceNameJSON?lng='+longitude+'&lat='+latitude+'&username=thejeshgn'
+                data = json.loads(requests.get(url).text)
+                country = data['geonames'][0]['countryName']
+                name = data['geonames'][0]['name']
+                checkpoint = CheckPoint(migrante=migrant,lon=longitude,lat=latitude,other_location='',city=name,state='',country=country)
                 checkpoint.save()
 
                 #future path of the migrant for display
