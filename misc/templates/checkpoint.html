@@ -5,9 +5,38 @@
 <title></title>
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <script type="text/javascript" src="{% static 'jquery.min.js' %}"></script>
+ <script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=places,drawing&sensor=true"></script>
+<script>
+function enablePlacesAPI(){
+
+
+    var input = $('input#search_place').get(0);
+    $('#search_place').show();
+    $('#no_button').hide();
+
+    var defaultBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(12.84655, 77.45117),//south-west
+        new google.maps.LatLng(13.15298, 77.78351)//north-east
+        );
+    var options = {
+        types: ['geocode']
+    };
+
+    var autocomplete = new google.maps.places.Autocomplete(input, options);
+ 
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    var place = autocomplete.getPlace();
+    $('#longitude').val(place.geometry.location.lng());
+    $('#latitude').val(place.geometry.location.lat());    
+    console.log(lat);
+    console.log(lng);
+    });
+}
+
+</script>
 
 <style>
-  #simplemodal-container {height:200px; width:360px; color:#bbb; background-color:rgba(44,44,44,.95); border:3px solid #C4AE27; padding:12px; border-radius:.5em;opacity:0.6;}
+  #simplemodal-container {height:250px; width:360px; color:#bbb; background-color:rgba(44,44,44,.95); border:3px solid #C4AE27; padding:12px; border-radius:.5em;opacity:0.6;}
   #simplemodal-container .simplemodal-data {padding:8px;}
   #simplemodal-container code {background:#141414; border-left:3px solid #65B43D; color:#bbb; display:block; font-size:12px; margin-bottom:12px; padding:4px 6px 6px;}
   #simplemodal-container a {color:#ddd;}
@@ -72,17 +101,20 @@
                             if ( console && console.log ) {
                               console.log( "Sample of data:", data['geonames'][0]['name']);
                             }
-                           model_content_html = 'Hemos detectado que te encuentras en: <br>'+data['geonames'][0]['name']+"<br>¿Es correcto? <br><br>"; 
+                           model_content_html = 'Hemos detectado que te encuentras en: '+data['geonames'][0]['name']+"<br>¿Es correcto? <br>"; 
                            model_content_html = model_content_html +'<form action="/checkin_save/" method="post">{{ csrf_token }}';
-                           model_content_html = model_content_html +'<input name="longitude" type="hidden" value="'+longitude+'" />';
-                           model_content_html = model_content_html +'<input name="latitude" type="hidden" value="'+latitude+'" />';
-                           model_content_html = model_content_html +'<input name="pseudo_name" type="hidden" value="{{migrant.pseudo|safe}}" />';
+                           model_content_html = model_content_html +'<input name="longitude" id="longitude" type="hidden" value="'+longitude+'" />';
+                           model_content_html = model_content_html +'<input name="latitude" id="latitude" type="hidden" value="'+latitude+'" />';
+                           model_content_html = model_content_html +'<input name="search_place" id="search_place" type="text" value="" />';
 
-                           model_content_html = model_content_html +'<input type="submit" value="Yes" /><input type="button" value="No" /><input type="button" value="Cancel" />';
+                           model_content_html = model_content_html +'<input name="pseudo_name" type="hidden" value="{{migrant.pseudo|safe}}" /><br>';
+
+                           model_content_html = model_content_html +'<input type="submit" value="Yes" /><input type="button" value="No" onclick="enablePlacesAPI();" id="no_button" />';
                            model_content_html = model_content_html +'</form>';
 
                             $("#question").html(model_content_html);
-                            $('#question').modal();
+                            $('#search_place').hide();
+                            $('#question').modal({position: [40,40]});
       
                         });
 
