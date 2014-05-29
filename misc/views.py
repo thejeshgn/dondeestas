@@ -3,10 +3,12 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.db import transaction
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.core.context_processors import csrf
 from django.views.generic import View
 from django.template.response import TemplateResponse
 from models import Migrant, CheckPoint
+from misc.forms import MigrantForm
 import json
 
 
@@ -82,3 +84,18 @@ class Register(View):
     def get(self, request, *args, **kwargs):
         return TemplateResponse(request, 'register.html')
 
+def MigrantCreate(request):
+    if request.POST:
+        form = MigrantForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            return HttpResponseRedirect('/')
+    else:
+        form = MigrantForm()
+
+    args = {}
+    args.update(csrf(request))
+    args['form'] = form
+
+    return render_to_response('register.html', args)
