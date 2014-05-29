@@ -6,11 +6,6 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <script type="text/javascript" src="{% static 'jquery.min.js' %}"></script>
 
-<!-- Page styles -->
-<link type='text/css' href="{% static 'simple/css/demo.css' %}" rel='stylesheet' media='screen' />
-
-<!-- Contact Form CSS files -->
-<link type='text/css' href="{% static 'simple/css/basic.css' %}" rel='stylesheet' media='screen' />
 <style>
   #simplemodal-container {height:200px; width:360px; color:#bbb; background-color:rgba(44,44,44,.95); border:3px solid #C4AE27; padding:12px; border-radius:.5em;opacity:0.6;}
   #simplemodal-container .simplemodal-data {padding:8px;}
@@ -20,8 +15,11 @@
   #simplemodal-container h3 {color:#84b8d9;}
 
   #simplemodal-container input{display:inline-block;border-radius:.5em;border:solid 2px #C4AE27;padding:.2em;font-weight:bold;font-size:.8em;width:70%;}
-  #simplemodal-container input{display:inline-block;margin-left:1em;width:20%;}
-  #simplemodal-container input:hover{border:solid 1px #fff;background:#C4AE27;}
+  #simplemodal-container input[type="submit"]{display:inline-block;margin-left:1em;width:20%;}
+  #simplemodal-container input[type="submit"]:hover{border:solid 1px #fff;background:#C4AE27;}
+  #simplemodal-container input[type="button"]{display:inline-block;margin-left:1em;width:20%;}
+  #simplemodal-container input[type="button"]:hover{border:solid 1px #fff;background:#C4AE27;}
+
 </style>
 
 
@@ -75,7 +73,12 @@
                               console.log( "Sample of data:", data['geonames'][0]['name']);
                             }
                            model_content_html = 'Hemos detectado que te encuentras en: <br>'+data['geonames'][0]['name']+"<br>¿Es correcto? <br><br>"; 
-                            model_content_html = model_content_html +'<input type="button" value="Yes" /><input type="button" value="No" /><input type="button" value="Cancel" />';
+                           model_content_html = model_content_html +'<form>';
+                           model_content_html = model_content_html +'<input name="longitude" type="hidden" value="'+longitude+'" />';
+                           model_content_html = model_content_html +'<input name="latitude" type="hidden" value="'+latitude+'" />';
+
+                           model_content_html = model_content_html +'<input type="submit" value="Yes" /><input type="button" value="No" /><input type="button" value="Cancel" />';
+                           model_content_html = model_content_html +'</form>';
 
                             $("#question").html(model_content_html);
                             $('#question').modal();
