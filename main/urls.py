@@ -9,7 +9,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', views.Home.as_view(),),
     url(r'path/', views.DisplayPath.as_view(),name='path',),
-    url(r'register/', views.Register.as_view(),name='register',),
+    url(r'^register/$', views.MigrantCreate),
     url(r'checkin/', views.CheckPointView.as_view(),name='register',),
 
 )
