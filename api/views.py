@@ -28,7 +28,7 @@ class MigrantViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.AllowAny,)
     allowed_methods = ('POST',)                
     queryset = Migrant.objects.all()
     serializer_class = MigrantSerializer
@@ -37,7 +37,7 @@ class AbuseViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.AllowAny,)
     allowed_methods = ('POST',)            
     queryset = Abuse.objects.all()
     serializer_class = AbuseSerializer
@@ -46,7 +46,7 @@ class CheckPointViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.AllowAny,)
     allowed_methods = ('POST',)            
     queryset = CheckPoint.objects.all()
     serializer_class = CheckPointSerializer
