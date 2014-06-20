@@ -39,13 +39,15 @@ class Migrant(models.Model):
 
     pseudo          = models.CharField(max_length=200, unique=True)
     origin_country = models.CharField(max_length=50, blank=True,null=True)
-    origin_lat      = models.CharField(max_length=20, blank=True,null=True)
-    origin_lng      = models.CharField(max_length=20, blank=True,null=True)
+    #origin defaults to Mexico
+    origin_lat      = models.CharField(max_length=20, blank=True,null=True,default='18.222829375236')
+    origin_lng      = models.CharField(max_length=20, blank=True,null=True,default='-99.0904998779297')
     age             = models.IntegerField(default=0)
     gender          = models.CharField(max_length=15,choices=GENDER,default='Unknown')
     dest_country    = models.CharField(max_length=50, blank=True,null=True)
-    dest_lat        = models.CharField(max_length=20, blank=True,null=True)
-    dest_lng        = models.CharField(max_length=20, blank=True,null=True)
+    #destination defaults to LA, USA
+    dest_lat        = models.CharField(max_length=20, blank=True,null=True,default='34.052235')
+    dest_lng        = models.CharField(max_length=20, blank=True,null=True,default='-118.243683')
     martial         = models.CharField(max_length=15,choices=MARTIAL_STATUS,default='Unknown')
     created         = models.DateTimeField(default=datetime.now)
     updated         = models.DateTimeField(default=datetime.now)

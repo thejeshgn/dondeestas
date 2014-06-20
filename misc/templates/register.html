@@ -1,7 +1,58 @@
 {% load staticfiles %}
-<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title></title><link rel="stylesheet" href="{% static 'css/style.css' %}"></head><body><section class="datosregistro"><div id="registra"><div class="migrante"><div class="formulario">
-<form action="/register/" method="post">{% csrf_token %}
-{{form}}
-<div class="bt"><input value="Guardar" type="submit"></div>
-</form>
-</div></div></div></section></body></html> 
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+		<script type="text/javascript" src="{% static 'jquery.min.js' %}"></script>
+		 <script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=places,drawing&sensor=true&language=es"></script>
+		<script>
+		function enablePlacesAPI(){
+
+		    var input = $('input#id_dest_country').get(0);
+		    console.log( 'elo');
+
+		    var defaultBounds = new google.maps.LatLngBounds(
+			new google.maps.LatLng(12.84655, 77.45117),//south-west
+			new google.maps.LatLng(13.15298, 77.78351)//north-east
+			);
+		    var options = {
+			types: ['geocode']
+		    };
+
+		    var autocomplete = new google.maps.places.Autocomplete(input, options);
+		 
+		    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+		    var place = autocomplete.getPlace();
+//		    $('#longitude').val(place.geometry.location.lng());
+//		    $('#latitude').val(place.geometry.location.lat());    
+//		    console.log( $('#longitude').val());
+//		    console.log($('#latitude').val());
+		    });
+		}
+		$(document).ready(function(){
+			$('#id_dest_country').click(enablePlacesAPI);
+		});
+		</script>
+
+
+		<!-- IE6 "fix" for the close png image -->
+		<!--[if lt IE 7]>
+		#simplemodal-container a.modalCloseImg {background:none; right:-14px; width:22px; height:26px; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/basic/x.png',sizingMethod='scale');}
+		<![endif]-->
+
+
+
+	</head>
+	<body><section class="datosregistro">
+		<div id="registra">
+		<div class="migrante">
+		<div class="formulario">
+			<form action="/register/" method="post">{% csrf_token %}
+			{{form}}
+			<div class="bt"><input value="Guardar" type="submit"></div>
+			</form>
+		</div></div></div></section>
+	</body>
+</html> 

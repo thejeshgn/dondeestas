@@ -127,7 +127,7 @@ function enablePlacesAPI(){
                     map.add(po.geoJson()
                     .features([present_location])
                     .id("points")
-                    .zoom(2)
+                    .zoom(4)
                     .tile(false).on("load", po.stylist().attr("stroke", "#fff22f").attr("stroke-width", ".3").attr("r",1)));               
 
                     });
