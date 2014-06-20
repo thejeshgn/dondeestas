@@ -49,9 +49,10 @@ coverage.xml
 *.log
 *.pot
 
+#v local files
 venv/
 db.sqlite3
-
+main/local_settings.py
 # Sphinx documentation
 docs/_build/
 
